@@ -11,6 +11,6 @@
         android:text="@+id/label"
         android:textColor="@android:color/holo_purple"
         android:textSize="18sp"
-        app:fontFamily="sans-serif"></TextView>
+        app:fontFamily="sans-serif"/>
 
 </LinearLayout>

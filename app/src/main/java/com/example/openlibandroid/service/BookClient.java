@@ -15,5 +15,6 @@ import retrofit2.http.Query;
 public interface BookClient {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @GET("/jokes/search")
-    Call<JokeList> booksForUser(@Query(value = "query") String search);
+    Call<JokeList> jokesBySearch(@Query(value = "query") String search);
+
 }

@@ -17,17 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SubjectActivity" > android:parentActivityName=".MainActivity"
+        <activity android:name=".activity.CategoryActivity" > android:parentActivityName=".MainActivity"
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.AuthorActivity" > android:parentActivityName=".MainActivity"
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.MainActivity" />
-        </activity>
-        <activity android:name=".activity.BookActivity"> android:parentActivityName=".MainActivity"
+        <activity android:name=".activity.SearchActivity"> android:parentActivityName=".MainActivity"
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />

@@ -16,17 +16,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openSubjectActivity(View view) {
-        Intent intent = new Intent(this, SubjectActivity.class);
-        startActivity(intent);
-    }
-
-    public void openAuthorActivity(View view) {
-        Intent intent = new Intent(this, AuthorActivity.class);
+        Intent intent = new Intent(this, CategoryActivity.class);
         startActivity(intent);
     }
 
     public void openBookActivity(View view) {
-        Intent intent = new Intent(this, BookActivity.class);
+        Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 }

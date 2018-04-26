@@ -19,14 +19,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BookActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
 
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_joke);
+        setContentView(R.layout.search_joke);
     }
 
     public void startSearch(View view) {
@@ -40,19 +40,19 @@ public class BookActivity extends AppCompatActivity {
         Retrofit retrofit = builder.build();
 
         BookClient client = retrofit.create(BookClient.class);
-        Call<JokeList> call = client.booksForUser(textView.getText().toString());
+        Call<JokeList> call = client.jokesBySearch(textView.getText().toString());
 
         call.enqueue(new Callback<JokeList>() {
             @Override
             public void onResponse(Call<JokeList> call, Response<JokeList> response) {
                 JokeList repos = response.body();
 
-                listView.setAdapter(new JokeAdapter(BookActivity.this, repos));
+                listView.setAdapter(new JokeAdapter(SearchActivity.this, repos));
             }
 
             @Override
             public void onFailure(Call<JokeList> call, Throwable t) {
-                Toast.makeText(BookActivity.this, "error :(", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchActivity.this, "error :(", Toast.LENGTH_SHORT).show();
             }
         });
     }
