@@ -9,7 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.openlibandroid.R;
-import com.example.openlibandroid.model.Book;
+import com.example.openlibandroid.model.Joke;
+import com.example.openlibandroid.model.JokeList;
 
 import java.util.List;
 
@@ -19,13 +20,13 @@ import java.util.List;
  * Created by norman on 12/26/16.
  */
 
-public class BookAdapter extends ArrayAdapter<Book> {
+public class JokeAdapter extends ArrayAdapter<Joke> {
 
     private Context context;
-    private List<Book> values;
+    private JokeList values;
 
-    public BookAdapter(Context context, List<Book> values) {
-        super(context, R.layout.list_item_pagination, values);
+    public JokeAdapter(Context context, JokeList values) {
+        super(context, R.layout.list_item_pagination, values.getResult());
 
         this.context = context;
         this.values = values;
@@ -43,8 +44,8 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
         TextView textView = (TextView) row.findViewById(R.id.list_item_pagination_text);
 
-        Book item = values.get(position);
-        String message = item.getBody();
+        Joke item = values.getResult().get(position);
+        String message = item.getValue();
         textView.setText(message);
 
         return row;
