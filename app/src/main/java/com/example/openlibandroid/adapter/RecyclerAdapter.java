@@ -51,7 +51,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
                     intent.putExtra("detail",bookList.getDocs().get(position).getAuthor_name().get(0));
                     view.getContext().startActivity(intent);
                 }
-
             });
         }
     }
