@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.openlibandroid.R;
 import com.example.openlibandroid.adapter.RecyclerAdapter;
 import com.example.openlibandroid.model.JokeList;
-import com.example.openlibandroid.service.BookClient;
+import com.example.openlibandroid.service.ApiClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,9 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CategoryActivity extends AppCompatActivity {
 private RecyclerView recyclerView;
 private RecyclerView.LayoutManager layOutManager;
-private RecyclerAdapter adapter;
 private JokeList jokeList;
-private BookClient bookClient;
+private ApiClient bookClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +33,6 @@ private BookClient bookClient;
         String[] items = new String[]{"explicit","dev","movie","food","celebrity","science","sport","political","religion","animal","history","music","travel","career","money","fashion"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
-
 
     }
     public void startSearchCategory(View view){
@@ -48,19 +46,20 @@ private BookClient bookClient;
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
-        bookClient = retrofit.create(BookClient.class);
+        bookClient = retrofit.create(ApiClient.class);
         String category = dropdown.getSelectedItem().toString();
         Call<JokeList> call = bookClient.jokesBySearch(category);
         call.enqueue(new Callback<JokeList>() {
             @Override
             public void onResponse(Call<JokeList> call, Response<JokeList> response) {
                 jokeList = response.body();
-                adapter = new RecyclerAdapter(jokeList.getResult());
-                recyclerView.setAdapter(adapter);
+                recyclerView.setAdapter(new RecyclerAdapter(jokeList));
             }
 
             @Override
             public void onFailure(Call<JokeList> call, Throwable t) {
+                System.out.println("----------------------------------------------------------------------");
+                t.printStackTrace();
                 Toast.makeText(CategoryActivity.this, "error :(", Toast.LENGTH_SHORT).show();
             }
         });

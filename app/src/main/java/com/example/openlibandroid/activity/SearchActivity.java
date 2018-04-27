@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.openlibandroid.R;
 import com.example.openlibandroid.adapter.JokeAdapter;
 import com.example.openlibandroid.model.JokeList;
-import com.example.openlibandroid.service.BookClient;
+import com.example.openlibandroid.service.ApiClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +39,7 @@ public class SearchActivity extends AppCompatActivity {
 
         Retrofit retrofit = builder.build();
 
-        BookClient client = retrofit.create(BookClient.class);
+        ApiClient client = retrofit.create(ApiClient.class);
         Call<JokeList> call = client.jokesBySearch(textView.getText().toString());
 
         call.enqueue(new Callback<JokeList>() {

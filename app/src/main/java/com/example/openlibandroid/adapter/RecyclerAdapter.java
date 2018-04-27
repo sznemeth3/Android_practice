@@ -7,15 +7,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.openlibandroid.R;
-import com.example.openlibandroid.model.Joke;
+import com.example.openlibandroid.model.BookList;
 import com.example.openlibandroid.model.JokeList;
 
-import java.util.List;
-
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
-    private List<Joke> jokeList;
-    public RecyclerAdapter(List<Joke> jokeList) {
+    private JokeList jokeList;
+    private BookList bookList;
+    public RecyclerAdapter(JokeList jokeList) {
         this.jokeList=jokeList;
+    }
+
+    public RecyclerAdapter(BookList bookList) {
+        this.bookList=bookList;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -25,19 +28,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.Name.setText(jokeList.get(position).getValue());
+        if (jokeList != null) {
+            holder.joke.setText(jokeList.getResult().get(position).getValue());
+        } else {
+            holder.book.setText(bookList.getDocs().get(position).getTitle());
+        }
     }
 
     @Override
     public int getItemCount() {
-        return jokeList.size();
+        if (jokeList != null) {
+            return jokeList.getTotal();
+        } else {
+            return bookList.getNumFound();
+        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView Name;
+        TextView book;
+        TextView joke;
         public MyViewHolder(View itemView) {
             super(itemView);
-            Name = (TextView)itemView.findViewById(R.id.joke);
+            joke = (TextView)itemView.findViewById(R.id.joke);
+            book = (TextView)itemView.findViewById(R.id.book);
         }
     }
 }

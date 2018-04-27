@@ -1,10 +1,12 @@
 package com.example.openlibandroid.model;
 
+import java.util.List;
+
 public class Joke {
 
 
 
-    private String category;
+    private List<String> category;
     private String icon_url;
     private String id;
     private String url;
@@ -13,7 +15,7 @@ public class Joke {
     public Joke() {
     }
 
-    public Joke(String category, String icon_url, String id, String url, String value) {
+    public Joke(List<String> category, String icon_url, String id, String url, String value) {
         this.category = category;
         this.icon_url = icon_url;
         this.id = id;
@@ -21,11 +23,11 @@ public class Joke {
         this.value = value;
     }
 
-    public String getCategory() {
+    public List<String> getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(List<String> category) {
         this.category = category;
     }
 

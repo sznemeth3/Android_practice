@@ -24,4 +24,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
+
+    public void openBookByAuthorActivity(View view) {
+        Intent intent = new Intent(this, BookByAuthorActivity.class);
+        startActivity(intent);
+    }
 }
