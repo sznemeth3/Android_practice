@@ -1,10 +1,12 @@
 package com.example.openlibandroid.activity;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,7 @@ public class BookByAuthorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_by_author);
 
     }
+
     public void startSearchBookCategory(View view){
         TextView textView = (EditText)findViewById(R.id.editText2);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
